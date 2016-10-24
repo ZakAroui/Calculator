@@ -1,3 +1,3 @@
 # Calculator with MySQL DB
 
-![Biped photo](BipedPhoto.png)
+![Calculator photo](CalculatorPhoto.png)
