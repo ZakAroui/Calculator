@@ -826,21 +826,21 @@ public class Calc extends javax.swing.JFrame {
     //show the saved calculations table from DB
     public void getRsltCalcTble() {
         ResultSet rs;
-        ResultSet newRset;
         try{
             //connect to DB and execute a query
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/zakidb", "root", "hello");
             System.out.println("connected to database");
             Statement stmt = connection.createStatement();
             rs=stmt.executeQuery("Select * from calculator_record");
-            newRset = rs;
             //count the available number of rows to initialze data[][] array
+            count = 0;
             while (rs.next()) {
                 ++count;
             }
             rowData = new String[count][5];
             int i = 0;
-            while (newRset.next())
+            rs=stmt.executeQuery("Select * from calculator_record");
+            while (rs.next())
             {
                 rowData[i][0] = rs.getString(1);
                 rowData[i][1] = rs.getString("operand_b");
@@ -852,7 +852,6 @@ public class Calc extends javax.swing.JFrame {
             //close the connection and resultsets
             connection.close();
             rs.close();
-            newRset.close();
         }
         catch(SQLException e){ 
             System.out.println("Error getting show data! "+e.toString());}

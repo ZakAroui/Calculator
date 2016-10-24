@@ -65,11 +65,12 @@ public class DBinOut {
         return "'"+content+"'";
     }
     
+    // TODO add operator codes for cmToInch and kmToMile
     //traslate the received operation code to operation character
     private void optToChar() {
          switch(optNbr){
              case 1:
-                 optChr = "%";
+                 optChr = "-/+";
                  break;
              case 2:
                  optChr = "/";
